@@ -58,3 +58,8 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+Revisions_Ecrit/UserSettings/EditorUserSettings.asset
+Revisions_Ecrit/.vsconfig
+Revisions_Ecrit/Library
+Revisions_Ecrit/obj
+Revisions_Ecrit/Logs
