@@ -45,36 +45,32 @@ public class GraphExplorer : MonoBehaviour
     }
 
     [Button]
-    void ExploreWidth()
+    void ExploreBreadthFirst()
     {
         ResetAllNodes();
 
-        StartCoroutine(ExploreGraphInWidth(startNode));
+        StartCoroutine(ExploreGraphBreadthFirst(startNode));
     }
 
-    GraphNode ExploreGraphBreadthFirst(GraphNode node, GraphNode targetNode)
+    IEnumerator ExploreGraphBreadthFirst(GraphNode node)
     {
         Queue<GraphNode> queue = new Queue<GraphNode>();
 
         queue.Enqueue(node);
-        node.MarkNode();
+        node.MarkAsFirst();
 
         while (queue.Count != 0)
         {
             node = queue.Dequeue();
             foreach (var connectedNode in node.connectedNodes)
             {
-                if (connectedNode == targetNode)
-                    return connectedNode;
-
                 if (!connectedNode.isVisited)
                 {
+                    yield return new WaitForSeconds(delay);
                     queue.Enqueue(connectedNode);
                     connectedNode.MarkNode();
                 }
             }
         }
-
-        return null;
     }
 }
